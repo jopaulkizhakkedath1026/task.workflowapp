@@ -1,0 +1,56 @@
+﻿[
+    {
+        "id":  "04b7842b-686d-4a89-b701-8d5d0728d630",
+        "description":  "chest workout",
+        "createdAt":  "2026-10-27T20:10:04.7683156+05:30",
+        "priority":  "urgent",
+        "dueDate":  "2026-10-28",
+        "title":  "gym",
+        "status":  "todo"
+    },
+    {
+        "id":  "1",
+        "description":  "Document acceptance criteria, roles, wireframes, and API contracts in README.",
+        "createdAt":  "2026-10-27T19:56:37.0136697+05:30",
+        "priority":  "high",
+        "dueDate":  "2023-05-10",
+        "title":  "Define Project MVP \u0026 User Stories",
+        "status":  "done"
+    },
+    {
+        "id":  "2",
+        "description":  "Configure User and Task models with strict field validation and indexes.",
+        "createdAt":  "2026-10-27T19:56:37.0166811+05:30",
+        "priority":  "urgent",
+        "dueDate":  "2023-05-12",
+        "title":  "Setup MongoDB Atlas \u0026 Mongoose Schemas",
+        "status":  "done"
+    },
+    {
+        "id":  "3",
+        "description":  "Ensure registered users can only see, edit, and delete their own workflow tasks.",
+        "createdAt":  "2026-10-27T19:56:37.0166811+05:30",
+        "priority":  "high",
+        "dueDate":  "2023-05-18",
+        "title":  "Implement JWT Auth \u0026 Ownership Verification",
+        "status":  "in_progress"
+    },
+    {
+        "id":  "4",
+        "description":  "Implement four UI states: Loading, Success, Empty, and Error banners.",
+        "createdAt":  "2026-10-27T19:56:37.0166811+05:30",
+        "priority":  "medium",
+        "dueDate":  "2023-05-20",
+        "title":  "Build Controlled Task Modal Form",
+        "status":  "review"
+    },
+    {
+        "id":  "5",
+        "description":  "Test all endpoints in Postman / Thunder Client with valid and edge case inputs.",
+        "createdAt":  "2026-10-27T19:56:37.0166811+05:30",
+        "priority":  "medium",
+        "dueDate":  "2023-05-24",
+        "title":  "Automated End-to-End API Testing",
+        "status":  "done"
+    }
+]

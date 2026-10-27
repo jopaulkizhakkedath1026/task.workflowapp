@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Internship Report - ICTAK</title>
+  <style>
+    :root {
+      --primary: #00839b;
+      --primary-dark: #005667;
+      --secondary: #00a8cc;
+      --text: #2c3e50;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 50px 60px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border);
+    }
+
+    .header-logo-section {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 25px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 6px 16px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      color: var(--primary-dark);
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    h2.report-type {
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    h3.domain {
+      color: #64748b;
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+
+    .meta-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 25px;
+      margin: 25px 0 35px;
+    }
+
+    .meta-card table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .meta-card td {
+      padding: 6px 12px;
+      border: none;
+    }
+
+    .meta-card td:first-child {
+      font-weight: 700;
+      color: var(--primary-dark);
+      width: 220px;
+    }
+
+    h2.section-title {
+      color: var(--primary-dark);
+      font-size: 1.4rem;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: #374151;
+      font-size: 1rem;
+    }
+
+    ul, ol {
+      margin: 10px 0 16px 25px;
+      color: #374151;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+
+    table.data-table th, table.data-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+
+    table.data-table th {
+      background-color: #f1f5f9;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    table.data-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 16px 0;
+      font-size: 0.88rem;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+    }
+
+    .actions-bar {
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: white;
+      }
+      .container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .actions-bar {
+        display: none;
+      }
+      h2.section-title {
+        break-after: avoid;
+      }
+      table, pre {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="actions-bar">
+      <button class="btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    </div>
+
+    <div class="header-logo-section">
+      <div class="badge">Information & Communication Technology Academy of Kerala</div>
+      <h1>ICT ACADEMY OF KERALA</h1>
+      <h2 class="report-type">Summer Internship Report</h2>
+      <h3 class="domain">Full Stack Application Development with ReactJS</h3>
+    </div>
+
+    <div class="meta-card">
+      <table>
+        <tr>
+          <td>Project Title:</td>
+          <td><strong>Employee Management Portal (Full Stack MERN App)</strong></td>
+        </tr>
+        <tr>
+          <td>Name of Team Members:</td>
+          <td><strong>Jopaul Kizhakkedath</strong> [and Team Members]</td>
+        </tr>
+        <tr>
+          <td>Name of Institution:</td>
+          <td>[Name of Your Institution]</td>
+        </tr>
+        <tr>
+          <td>Date of Submission:</td>
+          <td>May 2023</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2 class="section-title">Executive Summary</h2>
+    <p>This report documents the internship activities, technical architecture, implementation, and deliverables accomplished during the Summer Internship in <strong>Full Stack Application Development with ReactJS</strong> conducted by the <strong>Information & Communication Technology Academy of Kerala (ICTAK)</strong>.</p>
+    <p>The primary project centered on developing the backend services and integrating the responsive Single Page Application (SPA) for the <strong>Employee Management Portal</strong> using the MERN stack (MongoDB, Express.js, React.js, and Node.js). Key outcomes include provisioning a resilient cloud NoSQL database via MongoDB Atlas, constructing standardized RESTful CRUD APIs with validation and error-handling middleware, and serving production-optimized client assets seamlessly.</p>
+
+    <h2 class="section-title">Introduction</h2>
+    <p>Modern web engineering prioritizes decoupled, event-driven, scalable architectures. The ICTAK Full Stack Internship program provided an immersive experience bridging theoretical concepts in client-side ReactJS and server-side Node/Express development with practical, industry-grade implementation.</p>
+    <p>The project provides an intuitive corporate staff directory where organizations can register employees, review profiles by ID, revise role/compensation attributes, and delete decommissioned records in real time.</p>
+
+    <h2 class="section-title">Objectives</h2>
+    <ul>
+      <li>Implement a complete RESTful API supporting standard HTTP methods (<code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>).</li>
+      <li>Model workforce data schemas using Mongoose ODM connected to a remote MongoDB Atlas cluster.</li>
+      <li>Establish secure application middleware, including CORS, body parsing, and request logging.</li>
+      <li>Integrate pre-compiled React frontend client assets with the Express web server.</li>
+      <li>Perform rigorous API functional testing and end-to-end user journey verification using Postman and browser DevTools.</li>
+    </ul>
+
+    <h2 class="section-title">Scope and Deliverables</h2>
+    <p><strong>Scope:</strong> Complete backend integration of the Employee App, including MongoDB Atlas database connection, Express routing for five RESTful endpoints, static delivery of client build files, and comprehensive testing.</p>
+    <p><strong>Deliverables:</strong></p>
+    <ul>
+      <li>Production backend source code (<code>app.js</code> and <code>model/employeeList.js</code>).</li>
+      <li>Software Requirements Specification (SRS) documentation.</li>
+      <li>Complete API test suite evidence.</li>
+      <li>Formal Summer Internship Final Report.</li>
+    </ul>
+
+    <h2 class="section-title">Methodology</h2>
+    <p>The project adhered to an iterative Agile life cycle divided into key phases: requirement analysis, Mongoose schema modeling, REST route development, middleware integration, error handling, and verification.</p>
+
+    <h2 class="section-title">Project Activities</h2>
+    <ol>
+      <li><strong>Project & Dependency Setup:</strong> Initialized npm package with Express, Mongoose, Dotenv, Cors, and Morgan.</li>
+      <li><strong>Database Connection:</strong> Configured MongoDB Atlas cluster and authenticated via Mongoose connection URI.</li>
+      <li><strong>Schema Design:</strong> Implemented <code>employeeSchema</code> enforcing mandatory constraints on name, location, position, and salary.</li>
+      <li><strong>CRUD API Implementation:</strong> Constructed routes for retrieving all records, single record lookups, record insertion, record editing, and record removal.</li>
+      <li><strong>Static Asset Serving:</strong> Linked <code>dist/Frontend</code> build output to serve the responsive UI across desktop and mobile devices.</li>
+    </ol>
+
+    <h2 class="section-title">Results & Findings</h2>
+    <p>All core functional requirements and API contracts were successfully validated. Testing confirmed reliable response codes and data persistence:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Endpoint</th>
+          <th>Expected Action</th>
+          <th>Observed Status</th>
+          <th>Test Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td><code>/api/employeelist</code></td>
+          <td>Fetch full employee directory</td>
+          <td>200 OK</td>
+          <td>Passed</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td><code>/api/employeelist/:id</code></td>
+          <td>Retrieve single profile by ID</td>
+          <td>200 OK</td>
+          <td>Passed</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td><code>/api/employeelist</code></td>
+          <td>Insert new employee profile</td>
+          <td>201 / 200 OK</td>
+          <td>Passed</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td><code>/api/employeelist/:id</code></td>
+          <td>Update employee information</td>
+          <td>200 OK</td>
+          <td>Passed</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td><code>/api/employeelist/:id</code></td>
+          <td>Remove employee record</td>
+          <td>200 OK</td>
+          <td>Passed</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">Conclusion</h2>
+    <p>The internship at ICT Academy of Kerala successfully reinforced industry best practices in full stack web development using ReactJS and the MERN stack. The resulting Employee Management Portal operates reliably, with clean architecture and robust error resilience, fully meeting all curriculum criteria.</p>
+
+    <h2 class="section-title">Appendix</h2>
+    <p><strong>Core Server Implementation (Excerpt):</strong></p>
+    <pre><code>// RESTful Endpoint for Employee Listing
+app.get("/api/employeelist", async (req, res) => {
+  try {
+    const data = await employeeModel.find();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// RESTful Endpoint for New Employee Creation
+app.post("/api/employeelist", async (req, res) => {
+  try {
+    const data = new employeeModel(req.body);
+    const doc = await data.save();
+    res.status(201).json(doc);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});</code></pre>
+
+    <div style="margin-top: 40px; text-align: center; color: #64748b; font-size: 0.9rem; border-top: 1px solid var(--border); padding-top: 20px;">
+      Submitted in partial fulfillment of the Summer Internship Program at Information & Communication Technology Academy of Kerala (ICTAK)
+    </div>
+  </div>
+
+</body>
+</html>

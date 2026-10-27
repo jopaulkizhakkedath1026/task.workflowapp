@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Requirements Specification (SRS) - ICTAK</title>
+  <style>
+    :root {
+      --primary: #00839b;
+      --primary-dark: #005667;
+      --secondary: #00a8cc;
+      --text: #2c3e50;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --accent: #e0f2fe;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 50px 60px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      color: var(--primary-dark);
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    h2.subtitle {
+      color: var(--primary);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 15px;
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+    }
+
+    h3 {
+      color: var(--text);
+      font-size: 1.15rem;
+      margin-top: 22px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: #374151;
+    }
+
+    ul, ol {
+      margin: 10px 0 16px 25px;
+      color: #374151;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .meta-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 24px;
+      margin: 20px 0 30px;
+    }
+
+    .meta-box table {
+      margin: 0;
+    }
+
+    .meta-box td {
+      border: none;
+      padding: 6px 10px;
+    }
+
+    .meta-box td:first-child {
+      font-weight: 700;
+      color: var(--primary-dark);
+      width: 220px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 16px 0;
+      font-size: 0.88rem;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    .callout {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 14px 18px;
+      margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .actions-bar {
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: white;
+      }
+      .container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .actions-bar {
+        display: none;
+      }
+      h2 {
+        break-after: avoid;
+      }
+      table, pre {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="actions-bar">
+      <button class="btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    </div>
+
+    <div class="header-badge">ICT Academy of Kerala • Submission Deliverable</div>
+    <h1>Software Requirements Specification (SRS)</h1>
+    <h2 class="subtitle">Full Stack Application Development with ReactJS (MERN Stack)</h2>
+
+    <div class="meta-box">
+      <table>
+        <tr>
+          <td>Project Title:</td>
+          <td><strong>Employee Management Portal</strong></td>
+        </tr>
+        <tr>
+          <td>Course / Track:</td>
+          <td>Full Stack Application Development with ReactJS</td>
+        </tr>
+        <tr>
+          <td>Organization:</td>
+          <td>Information & Communication Technology Academy of Kerala (ICTAK)</td>
+        </tr>
+        <tr>
+          <td>Student / Candidate:</td>
+          <td><strong>Jopaul Kizhakkedath</strong></td>
+        </tr>
+        <tr>
+          <td>Institution:</td>
+          <td>[Name of Your Institution]</td>
+        </tr>
+        <tr>
+          <td>Submission Status:</td>
+          <td>Ready for Portal Submission (May 2023)</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>1. Introduction</h2>
+    <h3>1.1 Purpose</h3>
+    <p>This Software Requirements Specification (SRS) formally describes the system requirements, architectural specifications, interface protocols, and verification criteria for the <strong>Employee Management Portal</strong> developed during the ICT Academy of Kerala Summer Internship program.</p>
+    
+    <h3>1.2 Scope of the Application</h3>
+    <p>The system is a decoupled Single Page Application (SPA) powered by the MERN stack (MongoDB, Express.js, React.js, Node.js). The application serves as an enterprise workforce management dashboard enabling authorized users to manage employee profiles, track designations, analyze office postings, and record salary structures.</p>
+
+    <h2>2. Project Definition</h2>
+    <h3>2.1 Problem Statement</h3>
+    <div class="callout">
+      <strong>Problem Statement:</strong> Traditional spreadsheet-based employee records suffer from data inconsistency, absence of validation guards, concurrent editing conflicts, and a lack of responsive centralized access. The Employee Management Portal provides a cloud-backed, secure REST API and reactive web interface to streamline workforce record administration.
+    </div>
+
+    <h3>2.2 Target Users & Roles</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User Role</th>
+          <th>Description</th>
+          <th>Access Rights</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>HR Administrator</strong></td>
+          <td>Primary manager maintaining workforce database</td>
+          <td>Full CRUD privileges: Add, edit, list, and delete employee records.</td>
+        </tr>
+        <tr>
+          <td><strong>Department Lead</strong></td>
+          <td>Supervisory viewer monitoring workforce distributions</td>
+          <td>Read-only privileges: Browse directory, filter/view single records.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2.3 MVP Scope vs Future Enhancements</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>In Scope (MVP Deliverable)</th>
+          <th>Post-MVP (Future Roadmap)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Full CRUD operations for employees (`name`, `location`, `position`, `salary`)</td>
+          <td>JWT-based Role-Based Access Control (RBAC) & OAuth2</td>
+        </tr>
+        <tr>
+          <td>MongoDB Atlas cloud database integration with Mongoose</td>
+          <td>Bulk CSV employee import & Excel exports</td>
+        </tr>
+        <tr>
+          <td>RESTful API with JSON parsing, CORS, and logging</td>
+          <td>Profile image uploads via AWS S3 / Cloudinary</td>
+        </tr>
+        <tr>
+          <td>4-state UI lifecycle (Loading, Success, Empty, Error)</td>
+          <td>Automated payroll calculation and tax deductions</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. User Stories & Acceptance Criteria</h2>
+    <ul>
+      <li><strong>Story 1 (List All Employees):</strong> As an HR Administrator, I want to view a comprehensive list of employees so that I can audit current organizational staffing.
+        <br><em>Acceptance Criteria:</em> Page load triggers <code>GET /api/employeelist</code>; shows animated loader; displays table on success; displays empty state if 0 records; displays error banner if API is unreachable.
+      </li>
+      <li><strong>Story 2 (Create Employee):</strong> As an HR Administrator, I want to add a new employee profile with name, location, position, and salary.
+        <br><em>Acceptance Criteria:</em> Input validation requires all fields; submits via <code>POST /api/employeelist</code>; disables submit button while pending; updates directory table without page reload.
+      </li>
+      <li><strong>Story 3 (Lookup by ID):</strong> As a Team Lead, I want to view a single employee's profile by ID.
+        <br><em>Acceptance Criteria:</em> Fetches via <code>GET /api/employeelist/:id</code>; returns 200 with object; returns 404 for non-existent IDs.
+      </li>
+      <li><strong>Story 4 (Update Employee):</strong> As an HR Administrator, I want to edit designation or compensation parameters.
+        <br><em>Acceptance Criteria:</em> Modal pre-fills existing values; sends <code>PUT /api/employeelist/:id</code>; returns updated object with HTTP 200.
+      </li>
+      <li><strong>Story 5 (Delete Employee):</strong> As an HR Administrator, I want to remove a decommissioned staff record.
+        <br><em>Acceptance Criteria:</em> Sends <code>DELETE /api/employeelist/:id</code>; removes entry from table dynamically.
+      </li>
+    </ul>
+
+    <h2>4. System Architecture & Project Structure</h2>
+    <p>The application strictly adheres to the MERN three-tier decoupled architecture:</p>
+    <div class="callout">
+      <strong>Data Flow:</strong> Browser Client (React SPA) ➔ HTTP REST Requests (JSON) ➔ Express/Node API Server ➔ Mongoose ODM Queries ➔ MongoDB Atlas Cloud Database.
+    </div>
+
+    <h3>4.1 Codebase Structure</h3>
+    <pre><code>Employee-App/
+├── dist/Frontend/          # Production-built React client assets (HTML/JS/CSS)
+├── model/employeeList.js   # Mongoose database model & schema
+├── app.js                  # Express server, middlewares, and API routes
+├── .env.example            # Sample environment variables
+├── package.json            # Dependencies and npm run scripts
+└── README.md               # Setup and testing instructions</code></pre>
+
+    <h2>5. Data Model (Mongoose Schema)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Type</th>
+          <th>Constraint</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>_id</code></td>
+          <td>ObjectId</td>
+          <td>Primary Key (Auto)</td>
+          <td>Unique document identifier</td>
+        </tr>
+        <tr>
+          <td><code>name</code></td>
+          <td>String</td>
+          <td>Required</td>
+          <td>Full name of the employee</td>
+        </tr>
+        <tr>
+          <td><code>location</code></td>
+          <td>String</td>
+          <td>Required</td>
+          <td>Work location / base branch</td>
+        </tr>
+        <tr>
+          <td><code>position</code></td>
+          <td>String</td>
+          <td>Required</td>
+          <td>Job title / official designation</td>
+        </tr>
+        <tr>
+          <td><code>salary</code></td>
+          <td>Number</td>
+          <td>Required</td>
+          <td>Compensation figure in INR</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>6. API Contract Specification</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Method & Path</th>
+          <th>Functionality</th>
+          <th>Request Payload</th>
+          <th>Success Code</th>
+          <th>Error Codes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>GET /api/employeelist</code></td>
+          <td>Retrieve all employee records</td>
+          <td>None</td>
+          <td>200 OK (Array)</td>
+          <td>500 Server Error</td>
+        </tr>
+        <tr>
+          <td><code>GET /api/employeelist/:id</code></td>
+          <td>Retrieve single employee by ID</td>
+          <td>None</td>
+          <td>200 OK (Object)</td>
+          <td>400 Invalid ID, 404 Not Found</td>
+        </tr>
+        <tr>
+          <td><code>POST /api/employeelist</code></td>
+          <td>Create new employee record</td>
+          <td>JSON: name, location, position, salary</td>
+          <td>201 / 200 (Object)</td>
+          <td>400 Missing/Invalid Fields</td>
+        </tr>
+        <tr>
+          <td><code>PUT /api/employeelist/:id</code></td>
+          <td>Update employee information</td>
+          <td>JSON: modified fields</td>
+          <td>200 OK (Object)</td>
+          <td>400 Invalid Input, 404 Not Found</td>
+        </tr>
+        <tr>
+          <td><code>DELETE /api/employeelist/:id</code></td>
+          <td>Delete an employee record</td>
+          <td>None</td>
+          <td>200 OK</td>
+          <td>400 Invalid ID, 404 Not Found</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>7. Non-Functional Requirements</h2>
+    <ul>
+      <li><strong>Performance:</strong> Initial page load time &lt; 2 seconds; API response time &lt; 300ms.</li>
+      <li><strong>Security:</strong> All credentials isolated in <code>.env</code>; CORS configured; inputs parsed and sanitized.</li>
+      <li><strong>User Experience:</strong> Responsive layout supporting mobile, tablet, and desktop viewports. Explicit loading, empty, and error feedback states.</li>
+      <li><strong>Reliability:</strong> Graceful catch handlers on all asynchronous database queries to prevent server crashes.</li>
+    </ul>
+
+    <h2>8. Verification & Test Evidence</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Test Case</th>
+          <th>Tested Flow</th>
+          <th>Observed Status</th>
+          <th>Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TC-01</td>
+          <td>GET /api/employeelist</td>
+          <td>200 OK</td>
+          <td>PASSED</td>
+        </tr>
+        <tr>
+          <td>TC-02</td>
+          <td>GET /api/employeelist/:id</td>
+          <td>200 OK</td>
+          <td>PASSED</td>
+        </tr>
+        <tr>
+          <td>TC-03</td>
+          <td>POST /api/employeelist</td>
+          <td>201 / 200 OK</td>
+          <td>PASSED</td>
+        </tr>
+        <tr>
+          <td>TC-04</td>
+          <td>PUT /api/employeelist/:id</td>
+          <td>200 OK</td>
+          <td>PASSED</td>
+        </tr>
+        <tr>
+          <td>TC-05</td>
+          <td>DELETE /api/employeelist/:id</td>
+          <td>200 OK</td>
+          <td>PASSED</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 40px; text-align: center; color: #64748b; font-size: 0.9rem; border-top: 1px solid var(--border); padding-top: 20px;">
+      Document prepared for submission to Information & Communication Technology Academy of Kerala (ICTAK)
+    </div>
+  </div>
+
+</body>
+</html>
